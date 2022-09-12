@@ -1,10 +1,8 @@
 package com.leon.thread;
 
-import com.sun.xml.internal.ws.util.CompletedFuture;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 /**
  * @author Leon
@@ -31,9 +29,7 @@ public class FutureTest {
 
 
         CompletableFuture<String> getCode = CompletableFuture.supplyAsync(() -> "123");
-        CompletableFuture<Double> getDouble = getCode.thenApplyAsync((code) -> {
-            return 5 + Math.random() * 20;
-        });
+        CompletableFuture<Double> getDouble = getCode.thenApplyAsync((code) -> 5 + Math.random() * 20);
         getDouble.thenAccept(System.out::println);
 
         CompletableFuture<String> async1 = CompletableFuture.supplyAsync(() -> {
